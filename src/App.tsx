@@ -1,13 +1,9 @@
-import React from "react";
-import { ReducerSample } from "./components/reducer-sample";
-import { Provider } from "./components/sample-context";
+import CounterContainer from "./containers/counter-container/counter-container";
 
 function App() {
   return (
     <div className="App">
-      <Provider>
-        <ReducerSample />
-      </Provider>
+      <CounterContainer />
     </div>
   );
 }
