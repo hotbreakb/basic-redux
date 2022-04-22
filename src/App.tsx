@@ -1,14 +1,15 @@
 import React from "react";
+import { Counter } from "./components/counter";
 import { Form } from "./components/form";
 
 function App() {
-  const onSubmit = (form: { name: string; description: string }) => {
-    console.log(form);
-  };
+  // const onSubmit = (form: { name: string; description: string }) => {
+  //   console.log(form);
+  // };
 
   return (
     <div className="App">
-      <Form onSubmit={onSubmit}></Form>
+      <Counter />
     </div>
   );
 }
