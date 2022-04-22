@@ -1,5 +1,5 @@
 import React from "react";
-import { ReducerSample } from "./modules/reducer-sample";
+import { ReducerSample } from "./components/reducer-sample";
 
 function App() {
   return (
