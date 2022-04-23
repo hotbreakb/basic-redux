@@ -1,5 +1,5 @@
 import { Todo } from "../../../modules/todos/todos";
-import TodoItem from "../todo-item/todo-item";
+import { TodoItem } from "../todo-item";
 
 type TodoListProps = {
   todos: Todo[];
@@ -7,7 +7,7 @@ type TodoListProps = {
   onRemove: (id: number) => void;
 };
 
-export default function TodoList({ todos, onToggle, onRemove }: TodoListProps) {
+export const TodoList = ({ todos, onToggle, onRemove }: TodoListProps) => {
   if (todos.length === 0) return <p>등록된 항목이 없습니다.</p>;
   return (
     <ul>
@@ -21,4 +21,4 @@ export default function TodoList({ todos, onToggle, onRemove }: TodoListProps) {
       ))}
     </ul>
   );
-}
+};

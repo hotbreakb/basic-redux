@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import TodoInsert from "../../components/todo/todo-insert/todo-insert";
-import TodoList from "../../components/todo/todo-list/todo-list";
+import { TodoInsert } from "../../components/todo/todo-insert";
+import { TodoList } from "../../components/todo/todo-list";
 import { RootState } from "../../modules/rootReducer";
 import { addTodo, removeTodo, toggleTodo } from "../../modules/todos/todos";
 
-export default function TodoContainer() {
+export const TodoContainer = () => {
   const todos = useSelector((state: RootState) => state.todos);
   const dispatch = useDispatch();
 
@@ -26,4 +26,4 @@ export default function TodoContainer() {
       <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
     </>
   );
-}
+};

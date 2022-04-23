@@ -7,7 +7,7 @@ type TodoItemProps = {
   onRemove: (id: number) => void;
 };
 
-export default function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
+export const TodoItem = ({ todo, onToggle, onRemove }: TodoItemProps) => {
   const textStyle: CSSProperties = {
     textDecoration: todo.done ? "line-through" : "none",
   };
@@ -35,4 +35,4 @@ export default function TodoItem({ todo, onToggle, onRemove }: TodoItemProps) {
       </span>
     </li>
   );
-}
+};

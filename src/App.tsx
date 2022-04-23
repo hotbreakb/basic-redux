@@ -1,4 +1,4 @@
-import TodoContainer from "./containers/todo-container/todo-container";
+import { TodoContainer } from "./containers/todo-container";
 
 function App() {
   return (

@@ -1,10 +1,10 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 type TodoInsertProps = {
   onInsert: (text: string) => void;
 };
 
-export default function TodoInsert({ onInsert }: TodoInsertProps) {
+export const TodoInsert = ({ onInsert }: TodoInsertProps) => {
   const [value, setValue] = useState("");
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -25,4 +25,4 @@ export default function TodoInsert({ onInsert }: TodoInsertProps) {
       <button type="submit">등록</button>
     </form>
   );
-}
+};
