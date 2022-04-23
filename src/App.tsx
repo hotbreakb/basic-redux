@@ -1,9 +1,9 @@
-import CounterContainer from "./containers/counter-container/counter-container";
+import TodoContainer from "./containers/todo-container/todo-container";
 
 function App() {
   return (
     <div className="App">
-      <CounterContainer />
+      <TodoContainer />
     </div>
   );
 }
