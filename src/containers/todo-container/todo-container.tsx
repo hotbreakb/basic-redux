@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import TodoInsert from "../../components/todo/todo-insert/todo-indsert";
+import TodoInsert from "../../components/todo/todo-insert/todo-insert";
 import TodoList from "../../components/todo/todo-list/todo-list";
 import { RootState } from "../../modules/rootReducer";
 import { addTodo, removeTodo, toggleTodo } from "../../modules/todos/todos";
