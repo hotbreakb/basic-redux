@@ -2,8 +2,9 @@
 
 ### configureStore
 - `createStore`를 사용할 수 있지만 Redux에서는 좋아하지 않는 방식이다.
+  - `export const store = createStore(rootReducer);`
   - Redux Toolkit를 권장한다.
-- 프로퍼티와 값이 같을 때만 값을 생략할 수 있다.
+- 프로퍼티와 값이 같을 때만 값을 생략할 수 있다. (ES6)
 
 ```
 export const store = configureStore({
