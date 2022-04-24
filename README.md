@@ -1,7 +1,8 @@
 ## Redux Setting
 
 ### configureStore
-- 현재 `createStore`를 사용할 수 없다.
+- `createStore`를 사용할 수 있지만 Redux에서는 좋아하지 않는 방식이다.
+  - Redux Toolkit를 권장한다.
 - 프로퍼티와 값이 같을 때만 값을 생략할 수 있다.
 
 ```
@@ -42,4 +43,9 @@ export const store = configureStore({
 
 
 ### 참고자료
+
+#### 공식문서
+- [React-Redux](https://react-redux.js.org/)
+
+#### 블로그
 - [Redux (3) 리덕스를 리액트와 함께 사용하기](https://velog.io/@velopert/Redux-3-%EB%A6%AC%EB%8D%95%EC%8A%A4%EB%A5%BC-%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%99%80-%ED%95%A8%EA%BB%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-nvjltahf5e)
