@@ -1,9 +1,6 @@
 
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ActionType } from "typesafe-actions";
 import { getUserProfile, GithubProfile } from "../../api/github";
-import * as actions from "./actions";
-import { GET_USER_PROFILE, GET_USER_PROFILE_ERROR, GET_USER_PROFILE_SUCCESS } from "./actions";
 
 export const getUserProfileThunk = createAsyncThunk(
     `github/getUserProfile`, async (username: string) => {
@@ -13,12 +10,12 @@ export const getUserProfileThunk = createAsyncThunk(
 )
 
 // types
-export type GithubAction = ActionType<typeof actions>;
+// export type GithubAction = ActionType<typeof actions>;
 
 export type GithubState = {
     userProfile: {
         loading: boolean;
-        error: Error | null;
+        error: Error | null | unknown;
         data: GithubProfile | null;
     }
 }
@@ -35,21 +32,49 @@ const initialState: GithubState = {
 export const githubSlice = createSlice({
     name: "github",
     initialState,
-    reducers: {
-        [GET_USER_PROFILE]: (
-            { userProfile }: GithubState
-        ) => {
-            userProfile.loading = true;
-        },
-        [GET_USER_PROFILE_SUCCESS]: (
-            { userProfile }: GithubState, { payload }: PayloadAction<{ data: GithubProfile }>
-        ) => {
-            userProfile.data = payload.data;
-        },
-        [GET_USER_PROFILE_ERROR]: (
-            { userProfile }: GithubState, { payload }: PayloadAction<{ error: Error }>
-        ) => {
-            userProfile.error = payload.error;
-        },
-    }
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(getUserProfileThunk.pending, ({ userProfile }) => {
+                userProfile.error = null;
+                userProfile.loading = true;
+            })
+            .addCase(getUserProfileThunk.fulfilled, ({ userProfile }, { payload }) => {
+                userProfile.error = null;
+                userProfile.loading = false;
+                userProfile.data = payload;
+            })
+            .addCase(getUserProfileThunk.rejected, ({ userProfile }, { payload }) => {
+                userProfile.error = payload;
+                userProfile.loading = false;
+            });
+    },
+    // extraReducers: {
+    //     [getUserProfileThunk.pending.type]: (
+    //         { userProfile }: GithubState
+    //     ) => {
+    //         userProfile.loading = true;
+    //         userProfile.data = null;
+    //         userProfile.error = null;
+    //     },
+    //     [getUserProfileThunk.fulfilled.type]: (
+    //         { userProfile }: GithubState, { payload }: PayloadAction<{ data: GithubProfile }>
+    //     ) => {
+    //         userProfile.loading = false;
+    //         // userProfile.data = payload;
+    //         userProfile.error = null;
+    //         console.log(payload);
+    //         console.log(payload.data);
+    //     },
+    //     [getUserProfileThunk.rejected.type]: (
+    //         { userProfile }: GithubState, { payload }: PayloadAction<{ error: Error }>
+    //     ) => {
+    //         userProfile.loading = false;
+    //         userProfile.data = null;
+    //         userProfile.error = payload.error;
+    //     },
+    // }
 })
+
+
+// export const { setUserData } = githubSlice.actions;
