@@ -64,6 +64,19 @@ export const store = configureStore({
 
 <br>
 
+## Thunk
+
+1. `src/api`에 axios(fetch) 함수 작성
+2. module 작성
+  - actions `createAsyncAction`
+  - types `Action type`
+  - thunk `ThunkAction`
+  - reducers `createReducer`
+3. store
+  - `combineReducers`
+4. container 만들기
+  - `useSelector`, `useDispatch`
+
 ## 참고자료
 
 ### 공식문서
