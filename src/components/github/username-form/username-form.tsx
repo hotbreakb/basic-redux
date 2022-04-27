@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, ChangeEvent } from "react";
-import "username-form.css";
+import "./username-form.css";
 
 type GithubUsernameFormProps = {
   onSubmitUsername: (username: string) => void;
