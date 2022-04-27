@@ -11,7 +11,7 @@ export const PostListContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts()); // ERROR
+    dispatch(getPosts() as any); // ERROR
   }, [dispatch]);
 
   if (loading) return <div>로딩중...</div>;
