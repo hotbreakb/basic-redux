@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { GithubProfileInfo } from "../../components/github/profile-info/profile-info";
 import { GithubUsernameForm } from "../../components/github/username-form";
-import { getUserProfileThunk } from "../../modules/github";
+import { getUserProfileThunk } from "../../modules/github/github";
 import { RootState } from "../../modules/store";
 
 export const GithubProfileLoader = () => {

@@ -1,9 +1,9 @@
-import { PostListContainer } from "./containers/post-list-container/post-list-container";
+import { GithubProfileLoader } from "./containers/github-profile-loader/github-profile-loader";
 
 function App() {
   return (
     <div className="App">
-      <PostListContainer />
+      <GithubProfileLoader />
     </div>
   );
 }

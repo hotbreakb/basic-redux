@@ -1,5 +1,5 @@
 
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getUserProfile, GithubProfile } from "../../api/github";
 
 export const getUserProfileThunk = createAsyncThunk(
@@ -8,9 +8,6 @@ export const getUserProfileThunk = createAsyncThunk(
         return response;
     }
 )
-
-// types
-// export type GithubAction = ActionType<typeof actions>;
 
 export type GithubState = {
     userProfile: {
@@ -49,32 +46,4 @@ export const githubSlice = createSlice({
                 userProfile.loading = false;
             });
     },
-    // extraReducers: {
-    //     [getUserProfileThunk.pending.type]: (
-    //         { userProfile }: GithubState
-    //     ) => {
-    //         userProfile.loading = true;
-    //         userProfile.data = null;
-    //         userProfile.error = null;
-    //     },
-    //     [getUserProfileThunk.fulfilled.type]: (
-    //         { userProfile }: GithubState, { payload }: PayloadAction<{ data: GithubProfile }>
-    //     ) => {
-    //         userProfile.loading = false;
-    //         // userProfile.data = payload;
-    //         userProfile.error = null;
-    //         console.log(payload);
-    //         console.log(payload.data);
-    //     },
-    //     [getUserProfileThunk.rejected.type]: (
-    //         { userProfile }: GithubState, { payload }: PayloadAction<{ error: Error }>
-    //     ) => {
-    //         userProfile.loading = false;
-    //         userProfile.data = null;
-    //         userProfile.error = payload.error;
-    //     },
-    // }
 })
-
-
-// export const { setUserData } = githubSlice.actions;

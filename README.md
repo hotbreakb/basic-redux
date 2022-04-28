@@ -77,6 +77,12 @@ export const store = configureStore({
 4. container 만들기
   - `useSelector`, `useDispatch`
 
+### Redux Toolkit로 변환
+- `createAsyncThunk`로 API 호출
+- `createSlice`로 리듀서 작성
+  - 비동기 액션 관련 리듀서는 `extraReducers`에 작성
+  - builder: ActionReducerMapBuilder
+
 ## 참고자료
 
 ### 공식문서
