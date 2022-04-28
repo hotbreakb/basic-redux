@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counter from './counter/counter';
+import counter, { counterSaga } from './counter/counter';
 import { todosSlice } from './todos/todos';
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { logger } from "redux-logger";
@@ -7,6 +7,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from "redux-thunk";
 import posts from './posts/posts';
 import { githubSlice } from './github/github';
+import { all } from 'redux-saga/effects';
+import { createBrowserHistory } from 'history';
+import createSagaMiddleware from 'redux-saga';
+
+export const customHistory = createBrowserHistory();
+const sagaMiddleware = createSagaMiddleware();
 
 const reducers = {
     counter,
@@ -16,6 +22,9 @@ const reducers = {
 }
 
 const rootReducer = combineReducers(reducers);
+export function* rootSaga() {
+    yield all([counterSaga()]);
+}
 
 // export const store = configureStore({
 //     reducer: reducers,
@@ -23,8 +32,15 @@ const rootReducer = combineReducers(reducers);
 
 export const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(ReduxThunk, logger))
+    // composeWithDevTools(applyMiddleware(ReduxThunk, logger))
+    composeWithDevTools(applyMiddleware(
+        ReduxThunk.withExtraArgument({ history: customHistory }),
+        sagaMiddleware,
+        logger,
+    ))
 );
+
+sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
