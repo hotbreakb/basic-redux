@@ -65,6 +65,7 @@ export const store = configureStore({
 <br>
 
 ## Thunk
+- 함수를 디스패치 할 수 있게 해주는 미들웨어
 
 1. `src/api`에 axios(fetch) 함수 작성
 2. module 작성
@@ -83,15 +84,28 @@ export const store = configureStore({
   - 비동기 액션 관련 리듀서는 `extraReducers`에 작성
   - builder: ActionReducerMapBuilder
 
+## Saga
+- Thunk보다 더 다양한 일을 할 수 있다.
+
+- `put` 새로운 액션 디스패치
+- `takeEvery` 특정 액션 타입에 대해 디스패치되는 모든 액션들 처리
+- `takeLatest` 특정 액션 타입에 대해 디스패치된 가장 마지막 액션 처리
+- `all` 배열 안의 모든 사가 동시 실행
+
 ## 참고자료
 
 ### 공식문서
 - [React-Redux](https://react-redux.js.org/)
 
 ### 블로그
+
+#### Redux
 - [벨로퍼트의 블로그](https://react.vlpt.us) 강추👍
   - 리액트와 리덕스의 관계를 이해할 수 있도록 도와주는 기초 문서이다.
   - 2020년쯤 작성된 문서이지만 2022년인 지금 보는 데도 큰 문제가 없다.
 - [Todo에 리덕스 툴킷 적용](https://velog.io/@jwisgenius/Redux-Toolkit-withReact-Typescript)
   - `createSlice`
 - [Redux (3) 리덕스를 리액트와 함께 사용하기](https://velog.io/@velopert/Redux-3-%EB%A6%AC%EB%8D%95%EC%8A%A4%EB%A5%BC-%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%99%80-%ED%95%A8%EA%BB%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-nvjltahf5e)
+
+#### Thunk
+- [Redux-toolkit을 활용한 상태관리 [1]](https://maruzzing.github.io/study/react/Redux-toolkit%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-1/)
