@@ -29,21 +29,44 @@ const initialState: GithubState = {
 export const githubSlice = createSlice({
     name: "github",
     initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(getUserProfileThunk.pending, ({ userProfile }) => {
-                userProfile.error = null;
-                userProfile.loading = true;
-            })
-            .addCase(getUserProfileThunk.fulfilled, ({ userProfile }, { payload }) => {
-                userProfile.error = null;
-                userProfile.loading = false;
-                userProfile.data = payload;
-            })
-            .addCase(getUserProfileThunk.rejected, ({ userProfile }, { payload }) => {
-                userProfile.error = payload;
-                userProfile.loading = false;
-            });
-    },
+    reducers: {
+        GET_USER_PROFILE: (
+            { userProfile }: GithubState
+        ) => {
+            userProfile.loading = true;
+            userProfile.data = null;
+            userProfile.error = null;
+        },
+        GET_USER_PROFILE_SUCCESS: (
+            { userProfile }: GithubState, { payload }
+        ) => {
+            userProfile.loading = false;
+            userProfile.data = payload;
+            userProfile.error = null;
+        },
+        GET_USER_PROFILE_ERROR: (
+            { userProfile }: GithubState, { payload }
+        ) => {
+            userProfile.loading = false;
+            userProfile.data = null;
+            userProfile.error = payload;
+        },
+    }
+    // extraReducers: (builder) => {
+    //     builder
+    //         .addCase(getUserProfileThunk.pending, ({ userProfile }) => {
+    //             userProfile.error = null;
+    //             userProfile.loading = true;
+
+    //         })
+    //         .addCase(getUserProfileThunk.fulfilled, ({ userProfile }, { payload }) => {
+    //             userProfile.error = null;
+    //             userProfile.loading = false;
+    //             userProfile.data = payload;
+    //         })
+    //         .addCase(getUserProfileThunk.rejected, ({ userProfile }, { payload }) => {
+    //             userProfile.error = payload;
+    //             userProfile.loading = false;
+    //         });
+    // },
 })

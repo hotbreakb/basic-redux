@@ -10,6 +10,7 @@ import { githubSlice } from './github/github';
 import { all } from 'redux-saga/effects';
 import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
+import { githubSaga } from './github/saga';
 
 export const customHistory = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -23,7 +24,7 @@ const reducers = {
 
 const rootReducer = combineReducers(reducers);
 export function* rootSaga() {
-    yield all([counterSaga()]);
+    yield all([githubSaga()]);
 }
 
 // export const store = configureStore({
